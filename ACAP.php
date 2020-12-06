@@ -28,7 +28,124 @@
         crossorigin="anonymous"></script>
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!-- form submissiom -->
+<script>
+$(function () {
+
+$('#form1').on('submit', function (e) {
+
+  e.preventDefault();
+
+  $.ajax({
+    type: 'post',
+    url: 'acap-rega.php',
+    data: $('#form1').serialize(),
+    success: function (response) {
+    /* if(response== 0 )
+     {
+      swal({
+        title: "WRONG CAPTCHA!",
+        text: "Please re-enter the captcha!",
+        icon: "error",
+        buttons: true,
+        dangerMode: true,
+      }).then((value) => {
+      });
+    }*/
+   
+    if(response==0)
+    {
+      swal({
+        title: "INCOMPLETE DETAILS!",
+        text: "Please fill all the details!",
+        icon: "error",
+        buttons: true,
+        dangerMode: true,
+      }).then((value) => {
+
+      });
+    }
+    else if(response== 2 )
+    {
+     swal({
+      title: "REGISTRATED!",
+      text: "Registration successful!",
+      icon: "success",
+      buttons: true,
+      dangerMode: true,
+    }).then((value) => {
+      window.location="ACAP.php";
+
+    });
+//alert(response);
+}
+else
+{
+alert(response);
+}
+}
+});
+
+});
+
+});
+</script> 
+
+
+
+
+
+<script type="text/javascript">
+$(function () {
+
+$('#form2').on('submit', function (e) {
+
+  e.preventDefault();
+
+  $.ajax({
+    type: 'post',
+    url: 'acapregtu.php',
+    data: $('#form2').serialize(),
+    success: function (response) {
+    if(response== 0 )
+    {
+      swal({
+        title: "INCOMPLETE DETAILS!",
+        text: "Please fill all the details!",
+        icon: "error",
+        buttons: true,
+        dangerMode: true,
+      }).then((value) => {
+
+      });
+    }
+    else if(response== 2 )
+    {
+     swal({
+      title: "REGISTERED!",
+      text: "Registration successful!",
+      icon: "success",
+      buttons: true,
+      dangerMode: true,
+    }).then((value) => {
+      window.location="ACAP.php";
+
+    });
+//alert(response);
+}
+else
+{
+alert(response);
+}
+}
+});
+
+});
+
+});
+</script> 
 <style>
+
     .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited {
         background-color: #00416d !important;
         border-color: #00416d !important;
@@ -156,7 +273,7 @@
 
                       </div>
                       <div class="modal-body" style="font-family: 'Montserrat', sans-serif;">
-                         <form class="form-horizontal" class="col-sm-12" id="form1">
+                        <form class="form-horizontal" class="col-sm-12" id="form1">
                            <input placeholder="Name" name="name" type="text" class="validate"style="width:100%;" >
                            <br />
                            <br>
@@ -184,8 +301,8 @@
                             <input placeholder="Company placed via CDC" name="cdc" type="text" class="validate"style="width:100%;"  >
                         <br />
                         <br>
-                           <button  type="button" name="login_button" id="login_button" class="btn btn-block btn-primary">Login</button>
-                   </form>
+                           <button  type="submit" name="submit" id="submit" class="btn btn-block btn-primary">submit</button>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -229,7 +346,7 @@
                              <input placeholder="Preferred placement field (Eg. Software, Consultancy)" name="PC4" type="text" class="validate"style="width:100%;" >
                          <br />
                          <br>
-                        <button  type="button" name="login_button" id="login_button" class="btn btn-block btn-primary">Login</button>
+                        <button  type="submit" name="submit" id="submit" class="btn btn-block btn-primary">submit</button>
                    </form>
                       </div>
                     </div>
@@ -336,109 +453,6 @@
             });
         });
     </script>
-    <script type="text/javascript">
-  $(function () {
-
-    $('#form1').on('submit', function (e) {
-
-      e.preventDefault();
-
-      $.ajax({
-        type: 'post',
-        url: 'acap-rega.php',
-        data: $('#form1').serialize(),
-        success: function (response) {
-
-        if(response==0)
-        {
-          swal({
-            title: "INCOMPLETE DETAILS!",
-            text: "Please fill all the details!",
-            icon: "error",
-            buttons: true,
-            dangerMode: true,
-          }).then((value) => {
-
-          });
-        }
-        else if(response== 2 )
-        {
-         swal({
-          title: "REGISTRATED!",
-          text: "Registration successful!",
-          icon: "success",
-          buttons: true,
-          dangerMode: true,
-        }).then((value) => {
-          window.location="acap.php";
-
-        });
-}
-else
-{
-  alert(response);
-}
-}
-});
-
-    });
-
-  });
-</script>
-
-
-
-
-
-<script type="text/javascript">
-  $(function () {
-
-    $('#form2').on('submit', function (e) {
-
-      e.preventDefault();
-
-      $.ajax({
-        type: 'post',
-        url: 'acapregstu.php',
-        data: $('#form2').serialize(),
-        success: function (response) {
-        if(response== 0 )
-        {
-          swal({
-            title: "INCOMPLETE DETAILS!",
-            text: "Please fill all the details!",
-            icon: "error",
-            buttons: true,
-            dangerMode: true,
-          }).then((value) => {
-
-          });
-        }
-        else if(response== 2 )
-        {
-         swal({
-          title: "REGISTERED!",
-          text: "Registration successful!",
-          icon: "success",
-          buttons: true,
-          dangerMode: true,
-        }).then((value) => {
-          window.location="acap.php";
-
-        });
-//alert(response);
-}
-else
-{
-  alert(response);
-}
-}
-});
-
-    });
-
-  });
-</script>
 </body>
 
 </html>
